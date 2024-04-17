@@ -1,4 +1,9 @@
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+const jwtKey = process.env.JWT_KEY;
 
 export function checkPassword(password, confirm_password) {
     const rgNumber = new RegExp('[0-9]{1,}');
@@ -28,12 +33,22 @@ export function checkPassword(password, confirm_password) {
     return "Everything seems to be ok";
 }
 
-export function createAccessToken(payload, key) {
+export function createAccessToken(payload) {
     try {
-        const token = jwt.sign(payload, key);
+        const token = jwt.sign(payload, jwtKey);
         return token
     }
     catch (error) {
         throw error
+    }
+}
+
+export function decodeToken(token) {
+    try {
+        const decoded = jwt.verify(token, jwtKey);
+        return decoded;
+    }
+    catch (error) {
+        throw error;
     }
 }

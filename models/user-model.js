@@ -1,24 +1,17 @@
 import * as UserSchema from '../schema/user-schema.js';
 import * as lbBrain from '../lbb-brain.js';
 import crypto from 'crypto';
-import dotenv from 'dotenv';
-
-dotenv.config()
-
-const jwtKey = process.env.JWT_KEY;
 
 export async function createUser(req){
     const hash = crypto.createHash('sha256');
     console.log("🛠️  : create user");
     try {
         lbBrain.checkPassword(req.body.password, req.body.confirm_password);
-        const token = lbBrain.createAccessToken({username: req.body.username, mail: req.body.mail}, jwtKey)
         hash.update(req.body.password);
         const user = {
             username: req.body.username,
             password: hash.digest('hex'),
             mail: req.body.mail,
-            jwt: token
         }
         console.log(user)
         await UserSchema.UserModel.create(user);
@@ -40,7 +33,8 @@ export async function loginUser(req){
         if (!user) {
             throw('no such user');
         }
-        return(user);
+        const token = lbBrain.createAccessToken({"id": user._id , "mail": user.mail, "username": user.username})
+        return(token);
     }
     catch (e) {
         throw(e)

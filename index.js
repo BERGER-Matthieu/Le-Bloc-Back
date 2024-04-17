@@ -2,6 +2,8 @@ import * as regionController from './controllers/region-controller.js'
 import * as userController from './controllers/user-controller.js'
 import * as blocController from './controllers/bloc-controller.js'
 import * as spotController from './controllers/spot-controller.js'
+import * as messageController from './controllers/message-controller.js'
+
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import express from 'express'
@@ -38,6 +40,8 @@ app.post('/LBB/loginUser', userController.loginUser);
 app.post('/LBB/getUser', userController.getUser);
 
 app.post('/LBB/updateUser', userController.updateUser);
+
+app.post('/LBB/sendMessage', messageController.sendMessage);
 
 app.delete('/LBB/deleteUser', userController.deleteUser);
 
