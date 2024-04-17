@@ -59,6 +59,8 @@ app.get('/LBB/getRegionDataByName/:name', regionController.getRegionDataByName);
 
 app.get('/LBB/getAllRegion/', regionController.getAllRegion);
 
+app.get('/LBB/CreateBloc/', blocController.createBloc);
+
 app.listen(3001, () => {
     console.log("✅ : App connected to port 3001\n");
 })
