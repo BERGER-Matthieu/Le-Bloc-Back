@@ -28,6 +28,22 @@ export async function getSpotDataByName(req) {
     }
 }
 
+export async function getSpotDataById(req) {
+    const id = req.params['id'];
+    const filter = {_id: id}
+    try {
+        let spot = await SpotSchema.SpotModel.findOne(filter);
+        if (spot) {
+            return(spot);
+        } else {
+            throw("No such spot");
+        }
+    }
+    catch (e) {
+        throw(e);
+    }
+}
+
 export async function getSpotsByRegion(req) {
     const region = req.params['region'];
     const filter = {region: region}

@@ -57,6 +57,8 @@ app.get('/LBB/getAllSpot', spotController.getAllSpot);
 
 app.get('/LBB/getSpotDataByName/:name', spotController.getSpotDataByName);
 
+app.get('/LBB/getSpotDataById/:id', spotController.getSpotDataById);
+
 app.get('/LBB/getSpotsByRegion/:region', spotController.getSpotsByRegion);
 
 app.get('/LBB/getRegionDataByName/:name', regionController.getRegionDataByName);

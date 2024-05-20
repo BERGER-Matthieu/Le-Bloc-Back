@@ -31,6 +31,21 @@ export function getSpotDataByName(req, res){
     }
 }
 
+export function getSpotDataById(req, res){
+    try {
+        const result = spotModel.getSpotDataById(req);
+        result.then((result) => {
+            res.status(200).send(result)
+        })
+        .catch((e) => {
+            res.status(500).send({'error' : e})
+        })
+    }
+    catch (e) {
+        res.status(500).send({'error' : e})
+    }
+}
+
 export function getSpotsByRegion(req, res){
     try {
         const result = spotModel.getSpotsByRegion(req);
