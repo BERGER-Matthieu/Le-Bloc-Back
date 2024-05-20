@@ -32,9 +32,9 @@ export function loginUser(req, res){
     }
 }
 
-export function getUser(req, res){
+export function getUserById(req, res){
     try {
-        const result = userModel.getUser(req);
+        const result = userModel.getUserById(req);
         result.then((result) => {
             res.status(200).send(result)
         })
