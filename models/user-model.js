@@ -41,12 +41,13 @@ export async function loginUser(req){
     } 
 }
 
-export async function getUser(req){
+export async function getUserById(req){
     console.log("🛠️  : get user");
     try {
-        const jwt = req.body.jwt;
-        const filter = {jwt: jwt}
+        const id = req.body._id;
+        const filter = {_id: id}
         const user = await UserSchema.UserModel.findOne(filter);
+        console.log(user)
         if (!user) {
             throw('no such user');
         }
