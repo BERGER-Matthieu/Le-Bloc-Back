@@ -3,6 +3,7 @@ import * as userController from './controllers/user-controller.js'
 import * as blocController from './controllers/bloc-controller.js'
 import * as spotController from './controllers/spot-controller.js'
 import * as messageController from './controllers/message-controller.js'
+import * as addressController from './controllers/adresse-controller.js'
 
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -64,6 +65,8 @@ app.get('/LBB/getRegionDataByName/:name', regionController.getRegionDataByName);
 app.get('/LBB/getAllRegion/', regionController.getAllRegion);
 
 app.get('/LBB/CreateBloc/', blocController.createBloc);
+
+app.get('/LBB/getAddress', addressController.getAddressController);
 
 app.listen(3001, () => {
     console.log("✅ : App connected to port 3001\n");

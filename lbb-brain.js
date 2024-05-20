@@ -52,3 +52,24 @@ export function decodeToken(token) {
         throw error;
     }
 }
+
+// 48.88872639023972, 2.2809662147560688
+export function getLoc(loc) {
+    try{
+        // check if the string is a geographical data
+        const geoRegex = /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6},?\s*-?((1[0-7]|[1-9])?\d{1}|180)\.{1}\d{1,6}$/;
+        
+        if (geoRegex.test(loc)) {
+            locTab = loc.split(",");
+            for (var i = 0; i < locTab.length; i++) {
+                locTab[i] = locTab[i].trim();
+            }
+            return locTab
+        }else{
+            throw "not a valid position"
+        }
+    }
+    catch(error){
+        throw error
+    }
+}

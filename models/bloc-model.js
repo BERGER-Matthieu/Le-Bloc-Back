@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import * as lbBrain from '../lbb-brain.js';
 import * as user from "./user-model.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -10,17 +11,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export async function createBloc(req) {
   console.log("🗻  : adding bloc");
   try {
-    // username = user.getUser(req);
+    loc = getLoc(req.body.position)
     const bloc = {
       spot: req.body.spot,
       cotation: req.body.username,
       description: req.body.description,
       url: req.body.url,
       img: req.body.img,
-      position: req.body.position,
+      position: [{
+        longitude: loc[0],
+        latitude: loc[1],
+      }],
       user: "test",
     };
-    // console.log(username);
     console.log(bloc);
     await BlocSchema.BlocModel.create(bloc);
     console.log("🗻  : bloc added");
