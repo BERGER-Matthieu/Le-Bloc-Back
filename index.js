@@ -3,8 +3,6 @@ import * as regionController from './controllers/region-controller.js'
 import * as spotController from './controllers/spot-controller.js'
 import * as userController from './controllers/user-controller.js'
 import * as blocController from './controllers/bloc-controller.js'
-import * as spotController from './controllers/spot-controller.js'
-import * as messageController from './controllers/message-controller.js'
 import * as addressController from './controllers/adresse-controller.js'
 import * as lbBrain from './lbb-brain.js'
 
