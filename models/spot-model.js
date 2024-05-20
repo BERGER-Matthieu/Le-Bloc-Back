@@ -1,5 +1,17 @@
 import * as SpotSchema from '../schema/spot-schema.js'
 
+export async function createSpot({body}){
+    console.log("🛠️  : create spot");
+    try {
+        console.log(body)
+        await SpotSchema.SpotModel.create(body);
+        return {message: "User created"};
+    }
+    catch (e){
+        throw({'error': e});
+    }
+}
+
 export async function getSpotDataByName(req) {
     const name = req.params['name'];
     const filter = {name: name}
