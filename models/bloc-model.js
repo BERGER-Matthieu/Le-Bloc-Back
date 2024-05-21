@@ -1,8 +1,10 @@
-import * as BlocSchema from '../schema/bloc-schema.js'
-import path from 'path'
-import fs from 'fs'
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import * as BlocSchema from "../schema/bloc-schema.js";
+import path from "path";
+import fs from "fs";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import * as lbBrain from '../lbb-brain.js';
+import * as user from "./user-model.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -98,15 +100,14 @@ export async function getBlocsBySpot(req){
     } 
 }
 
-export async function getAllBloc(req){
-    try {
-        const bloc = await BlocSchema.BlocModel.find();
-        if (!bloc) {
-            throw('no such bloc');
-        }
-        return(bloc);
+export async function getAllBloc(req) {
+  try {
+    const bloc = await BlocSchema.BlocModel.find();
+    if (!bloc) {
+      throw "no such bloc";
     }
-    catch (e) {
-        throw(e)
-    } 
+    return bloc;
+  } catch (e) {
+    throw e;
+  }
 }
