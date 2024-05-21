@@ -5,6 +5,7 @@ const ObjectId = mongoose.ObjectId;
 
 export const Bloc = new Schema({
     id: ObjectId,
+    name: String,
     spot: String,
     cotation: String,
     description: String,

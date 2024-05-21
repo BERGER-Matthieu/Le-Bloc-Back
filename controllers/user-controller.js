@@ -1,5 +1,22 @@
 import * as userModel from '../models/user-model.js'
 
+export function getUserByToken(req, res){
+    try {
+        const result = userModel.getUserByToken(req);
+        result.then((result) => {
+            res.status(200).send(result)
+        })
+        .catch((e) => {
+            console.log(e)
+            res.status(500).send(e)
+        })
+    }
+    catch (e) {
+        res.status(500).send(e)
+    }
+
+}
+
 export function createUser(req, res){
     try {
         const result = userModel.createUser(req);

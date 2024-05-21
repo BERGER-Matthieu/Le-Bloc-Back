@@ -32,38 +32,28 @@ app.use(bodyParser.urlencoded({extended: false}));
 //PUT
 app.put('/LBB/createUser', userController.createUser);
 app.put('/LBB/createSpot', spotController.createSpot);
+app.put('/LBB/createBloc', blocController.createBloc);
 
 //POST
 app.post('/LBB/loginUser', userController.loginUser);
-
 app.post('/LBB/getUserById', userController.getUserById);
-
 app.post('/LBB/updateUser', userController.updateUser);
-
 app.post('/LBB/sendMessage', messageController.sendMessage);
 
 //GET
 app.get('/LBB/getFirtsMessageOf/:senderId:receiverId', messageController.getFirtsMessageOf);
-
 app.get('/LBB/getBlocDataByName/:name', blocController.getBlocDataByName);
-
 app.get('/LBB/getAllBloc', blocController.getAllBloc);
-
 app.get('/LBB/getBlocsBySpot/:spot', blocController.getBlocsBySpot);
-
 app.get('/LBB/getBlocImgByName/:name', blocController.getBlocImgByName);
-
+app.get('/LBB/getBlocImgById/:id', blocController.getBlocImgById);
 app.get('/LBB/getAllSpot', spotController.getAllSpot);
-
 app.get('/LBB/getSpotDataByName/:name', spotController.getSpotDataByName);
-
 app.get('/LBB/getSpotDataById/:id', spotController.getSpotDataById);
-
 app.get('/LBB/getSpotsByRegion/:region', spotController.getSpotsByRegion);
-
 app.get('/LBB/getRegionDataByName/:name', regionController.getRegionDataByName);
-
 app.get('/LBB/getAllRegion/', regionController.getAllRegion);
+app.get('/LBB/getUserByToken/:token', userController.getUserByToken);
 
 //DELETE
 app.delete('/LBB/deleteUser', userController.deleteUser);

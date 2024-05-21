@@ -2,6 +2,20 @@ import * as UserSchema from '../schema/user-schema.js';
 import * as lbBrain from '../lbb-brain.js';
 import crypto from 'crypto';
 
+export async function getUserByToken({params}){
+    console.log("🛠️  : get user by token");
+    try {
+        const token = params.token;
+        const user = lbBrain.decodeToken(token);
+        const patern = {_id: user._id}
+        await UserSchema.UserModel.findOne(patern);
+        return {message: "User found"};
+    }
+    catch (e) {
+        throw({'error': e})
+    }
+}
+
 export async function createUser(req){
     const hash = crypto.createHash('sha256');
     console.log("🛠️  : create user");

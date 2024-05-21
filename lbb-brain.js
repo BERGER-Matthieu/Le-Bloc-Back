@@ -45,7 +45,7 @@ export function createAccessToken(payload) {
 
 export function decodeToken(token) {
     try {
-        const decoded = jwt.verify(token, jwtKey);
+        const decoded = jwt.decode(token);
         return decoded;
     }
     catch (error) {
