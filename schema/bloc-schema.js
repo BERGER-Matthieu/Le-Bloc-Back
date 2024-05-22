@@ -5,6 +5,7 @@ const ObjectId = mongoose.ObjectId;
 
 export const Bloc = new Schema({
   id: ObjectId,
+  userId: { type: ObjectId, ref: 'User' },
   spot: String,
   name: String,
   cotation: String,
@@ -15,7 +16,6 @@ export const Bloc = new Schema({
     longitude: String,
     latitude: String
   }],
-  user: String,
 });
 
 export const BlocModel = mongoose.model("BlocModel", Bloc, "Blocs");

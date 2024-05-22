@@ -4,7 +4,6 @@ import fs from "fs";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as lbBrain from '../lbb-brain.js';
-import * as user from "./user-model.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -24,8 +23,11 @@ export async function createBloc({body}){
             cotation: body.cotation,
             description: body.description,
             region: (body.region === undefined || body.region === "") ? "none" : body.region,
-            url: `${newBloc._id}.png`
+            url: `${newBloc._id}.png`,
+            userId: lbBrain.decodeToken(body.token).id,
         }
+
+        console.log(bloc)
 
         newBloc.set(bloc);
         newBloc.save();
@@ -101,13 +103,13 @@ export async function getBlocsBySpot(req){
 }
 
 export async function getAllBloc(req) {
-  try {
-    const bloc = await BlocSchema.BlocModel.find();
-    if (!bloc) {
-      throw "no such bloc";
+    try {
+        const bloc = await BlocSchema.BlocModel.find();
+        if (!bloc) {
+        throw "no such bloc";
+        }
+        return bloc;
+    } catch (e) {
+        throw e;
     }
-    return bloc;
-  } catch (e) {
-    throw e;
-  }
 }

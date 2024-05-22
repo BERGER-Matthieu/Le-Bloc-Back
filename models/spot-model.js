@@ -1,10 +1,21 @@
 import * as SpotSchema from '../schema/spot-schema.js'
+import { decodeToken } from '../lbb-brain.js'
 
 export async function createSpot({body}){
     console.log("🛠️  : create spot");
     try {
-        console.log(body)
-        await SpotSchema.SpotModel.create(body);
+        const newSpot = {
+            region: body.region,
+            name: body.name,
+            tag: body.tag,
+            description: body.description,
+            coord: body.coord,
+            url: body.url,
+            userId: decodeToken(body.token).id,
+        }
+
+        console.log(newSpot)
+        await SpotSchema.SpotModel.create(newSpot);
         return {message: "User created"};
     }
     catch (e){

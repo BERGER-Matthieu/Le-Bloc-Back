@@ -5,6 +5,7 @@ import crypto from 'crypto';
 export async function getUserByToken({params}){
     console.log("🛠️  : get user by token");
     try {
+        console.log(params)
         const token = params.token;
         const user = lbBrain.decodeToken(token);
         const patern = {_id: user._id}

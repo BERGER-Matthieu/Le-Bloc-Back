@@ -5,6 +5,7 @@ const ObjectId = mongoose.ObjectId;
 
 export const Spot = new Schema({
     id: ObjectId,
+    userId: { type: ObjectId, ref: 'User' },
     region: String,
     name: String,
     tag: String,
