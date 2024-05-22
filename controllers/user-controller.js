@@ -2,6 +2,7 @@ import * as userModel from '../models/user-model.js'
 
 export function getUserByToken(req, res){
     try {
+        console.log(req.params);
         const result = userModel.getUserByToken(req);
         result.then((result) => {
             res.status(200).send(result)

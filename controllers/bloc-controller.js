@@ -90,6 +90,23 @@ export function getBlocsBySpot(req, res) {
     }
 }
 
+export function getBlocsByUser(req, res) {
+    try {
+        const result = blocModel.getBlocsByUser(req);
+        result.then((content) => {
+            console.log(content)
+            res.status(200).send(content)
+        })
+        .catch((e) => {
+            console.log(e)
+            res.status(500).send({'error': e})
+        })
+    }
+    catch (e) {
+        res.status(500).send({'error': e})
+    }
+}
+
 export function getAllBloc(req, res) {
     try {
         const result = blocModel.getAllBloc(req);

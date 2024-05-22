@@ -55,11 +55,33 @@ export async function getSpotDataById(req) {
     }
 }
 
+export async function getSpotDataByUserId(req) {
+    console.log("🛠️  : get spot by user id");
+    console.log(req.params);
+    const userId = req.params['userId'];
+    const filter = {userId: userId}
+    try {
+        let spot = await SpotSchema.SpotModel.findOne(filter);
+        console.log("=>", spot)
+        if (spot) {
+            return(spot);
+        } else {
+            throw("No such spot");
+        }
+    }
+    catch (e) {
+        throw(e);
+    }
+}
+
 export async function getSpotsByRegion(req) {
+    console.log("🛠️  : get spots by region");
+    console.log(req.params['region']);
     const region = req.params['region'];
     const filter = {region: region}
     try {
         let spot = await SpotSchema.SpotModel.find(filter);
+        console.log(spot)
         if (!spot) {
             throw("No such spot");
         }

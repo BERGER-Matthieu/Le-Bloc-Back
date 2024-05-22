@@ -102,6 +102,22 @@ export async function getBlocsBySpot(req){
     } 
 }
 
+export async function getBlocsByUser(req){
+    try {
+        console.log(req.params)
+        const userId = req.params['user'];
+        const filter = {userId: userId}
+        const bloc = await BlocSchema.BlocModel.find(filter);
+        if (!bloc) {
+            throw('no such bloc');
+        }
+        return(bloc);
+    }
+    catch (e) {
+        throw(e)
+    } 
+}
+
 export async function getAllBloc(req) {
     try {
         const bloc = await BlocSchema.BlocModel.find();

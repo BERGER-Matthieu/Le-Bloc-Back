@@ -46,11 +46,13 @@ app.get('/LBB/getFirtsMessageOf/:senderId:receiverId', messageController.getFirt
 app.get('/LBB/getBlocDataByName/:name', blocController.getBlocDataByName);
 app.get('/LBB/getAllBloc', blocController.getAllBloc);
 app.get('/LBB/getBlocsBySpot/:spot', blocController.getBlocsBySpot);
+app.get('/LBB/getBlocsByUser/:user', blocController.getBlocsByUser);
 app.get('/LBB/getBlocImgByName/:name', blocController.getBlocImgByName);
 app.get('/LBB/getBlocImgById/:id', blocController.getBlocImgById);
 app.get('/LBB/getAllSpot', spotController.getAllSpot);
 app.get('/LBB/getSpotDataByName/:name', spotController.getSpotDataByName);
 app.get('/LBB/getSpotDataById/:id', spotController.getSpotDataById);
+app.get('/LBB/getSpotDataByUserId/:userId', spotController.getSpotDataByUserId);
 app.get('/LBB/getSpotsByRegion/:region', spotController.getSpotsByRegion);
 app.get('/LBB/getRegionDataByName/:name', regionController.getRegionDataByName);
 app.get('/LBB/getAllRegion/', regionController.getAllRegion);

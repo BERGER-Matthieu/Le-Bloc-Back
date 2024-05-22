@@ -8,9 +8,10 @@ export async function getUserByToken({params}){
         console.log(params)
         const token = params.token;
         const user = lbBrain.decodeToken(token);
-        const patern = {_id: user._id}
+        const patern = {_id: user.id}
         await UserSchema.UserModel.findOne(patern);
-        return {message: "User found"};
+        console.log(user)
+        return {message: "User found", data: user};
     }
     catch (e) {
         throw({'error': e})
